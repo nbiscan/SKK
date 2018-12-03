@@ -31,14 +31,18 @@ class Home extends Component {
         return (
             <div className='home'>
                 {(!this.state.registered) && <PageHeader>
-                    <Link className='link' to='/login'>Login</Link>
-                    <Link className='link' to='/register'>Register</Link>
+                    <small>
+                        <Link className='link' to='/login'>Login</Link>
+                    </small>
+                    <small>
+                        <Link className='link' to='/register'>Register</Link>
+                    </small>
                 </PageHeader>}
 
                 {(this.state.registered) &&
                     <PageHeader>
-                        <button className='link' onClick={() => history.push('/mytickets')}>My Tickets</button>
-                        <button className='link' onClick={() => this.logout()}>Logout</button>
+                        <small><button className='link' onClick={() => history.push('/mytickets')}>My Tickets</button></small>
+                        <small><button className='link' onClick={() => this.logout()}>Logout</button></small>
                     </PageHeader>}
 
                 {this.state.tickets.map(ticket =>

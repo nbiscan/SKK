@@ -35,8 +35,8 @@ class Ticket extends Component {
                     />
                 )}
                 <Panel className='ticket'>
-                    <p>From: {from}</p>
-                    <p>To: {to}</p>
+                    <h3>From: {from}</h3>
+                    <h3>To: {to}</h3>
                     <p>Departure time: {moment(dep).format('MMMM Do YYYY, h:mm:ss a')}</p>
                     <p>Arrival time: {moment(arr).format('MMMM Do YYYY, h:mm:ss a')}</p>
                     <p>Number of tickets left: {no}</p>
