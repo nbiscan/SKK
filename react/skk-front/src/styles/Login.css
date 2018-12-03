@@ -1,0 +1,20 @@
+.all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #2C3A47;
+  align-content: center;
+  height: 700px;
+}
+
+.login {
+    width: 60%;
+    align-content: center;
+    margin: 20px;
+}
+
+.link{
+    margin:20px;
+    color:#FD7272;
+}

@@ -1,0 +1,15 @@
+.home {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #2C3A47;
+  align-content: center;
+  
+}
+
+.link {
+    color: #FD7272;
+    background:none;
+    border:none;
+}
