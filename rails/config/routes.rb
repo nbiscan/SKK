@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   get "tickets", to: "ticket#getall"
 
-  # get "/users/:user_id/tickets/", to: "tickets#get_tickets"
-  # delete "/users/:user_id/tickets/", to: "ticket#delete_ticket"
+  get "/users/:user_id/tickets/", to: "user_tickets#index"
+  post "/users/:user_id/tickets", to: "user_tickets#create"
+  delete "/users/:user_id/tickets/ticket_id", to: "user_tickets#destroy"
 
   post "auth/login", to: "authentication#authenticate"
   post "signup", to: "users#create"

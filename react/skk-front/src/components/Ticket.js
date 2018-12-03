@@ -41,7 +41,7 @@ class Ticket extends Component {
                     <p>Arrival time: {moment(arr).format('MMMM Do YYYY, h:mm:ss a')}</p>
                     <p>Number of tickets left: {no}</p>
                     <p>Price: {price}</p>
-                    {buy && <Button onClick={() => this.showModal()}> Buy me</Button>}
+                    {buy && <Button onClick={() => this.showModal()}>Buy</Button>}
                 </Panel>
             </div >
         );

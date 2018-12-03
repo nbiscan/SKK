@@ -2,7 +2,7 @@ class UserTicketsController < ApplicationController
   before_action :set_user
   before_action :set_user_ticket, only: [:show, :update, :destroy]
 
-  # GET /user/:user_id/tickets
+  # GET /users/:user_id/tickets
   def index
     json_response(@user.tickets)
   end

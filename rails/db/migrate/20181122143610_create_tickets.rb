@@ -8,7 +8,6 @@ class CreateTickets < ActiveRecord::Migration[5.2]
       t.integer :no_of_cards
       t.integer :price
       t.references :carrier
-      t.references :user_ticket
 
       t.timestamps
     end
