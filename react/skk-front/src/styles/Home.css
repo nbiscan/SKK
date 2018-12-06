@@ -5,11 +5,16 @@
   align-items: center;
   background-color: #2C3A47;
   align-content: center;
-  
+  padding-bottom: 220px;
+
 }
 
 .link {
     color: #FD7272;
     background:none;
     border:none;
+}
+
+.header {
+    margin-left: 40%;
 }

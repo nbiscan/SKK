@@ -33,7 +33,7 @@ class MyTickets extends Component {
         return (
             <div className='home'>
 
-                <PageHeader>
+                <PageHeader className='header'>
                     <small><button className='link' onClick={() => history.push('/')}>Back</button></small>
                 </PageHeader>
 

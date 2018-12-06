@@ -30,7 +30,7 @@ class Home extends Component {
     render() {
         return (
             <div className='home'>
-                {(!this.state.registered) && <PageHeader>
+                {(!this.state.registered) && <PageHeader className='header'>
                     <small>
                         <Link className='link' to='/login'>Login</Link>
                     </small>
@@ -40,7 +40,7 @@ class Home extends Component {
                 </PageHeader>}
 
                 {(this.state.registered) &&
-                    <PageHeader>
+                    <PageHeader className='header'>
                         <small><button className='link' onClick={() => history.push('/mytickets')}>My Tickets</button></small>
                         <small><button className='link' onClick={() => this.logout()}>Logout</button></small>
                     </PageHeader>}
