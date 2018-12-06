@@ -34,7 +34,7 @@ class Ticket extends Component {
         });
 
         if(resp && resp===204){
-            window.reload();
+            window.location.reload();
         }
     }
 
