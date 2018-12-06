@@ -7,26 +7,15 @@ class UserTicketsController < ApplicationController
     json_response(@user.tickets)
   end
 
-  # GET /users/:user_id/tickets/:id
-  def show
-    json_response(@ticket)
-  end
-
   # POST /users/:user_id/tickets
   def create
-    @user.tickets.create!(ticket_params)
-    json_response(@user, :created)
-  end
-
-  # PUT /users/:user_id/tickets/:id
-  def update
-    @ticket.update(ticket_params)
-    head :no_content
+    UserTicket.create!(user_ticket_params)
+    json_response(:created)
   end
 
   # DELETE /users/:user_id/tickets/:id
   def destroy
-    @ticket.destroy
+    UserTicket.find_by!(user_id: params[:user_id], ticket_id: params[:ticket_id]).destroy()
     head :no_content
   end
 
@@ -34,6 +23,10 @@ class UserTicketsController < ApplicationController
 
   def ticket_params
     params.permit(:from, :to, :departure, :arrival, :no_of_cards, :price)
+  end
+
+  def user_ticket_params
+    params.permit(:user_id, :ticket_id)
   end
 
   def set_user
