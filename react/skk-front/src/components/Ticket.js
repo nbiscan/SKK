@@ -3,12 +3,13 @@ import { Panel, Button } from 'react-bootstrap';
 import moment from 'moment';
 import '../styles/Ticket.css';
 import BuyModal from './BuyModal';
+import axios from 'axios';
 
 class Ticket extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showModal:false,
+            showModal: false,
         }
     }
 
@@ -24,14 +25,20 @@ class Ticket extends Component {
         });
     }
 
+    delete() {
+        const ticketid = this.props.id;
+        const resp = axios.delete(`http://localhost:3000/users/1/tickets/${ticketid}`);
+    }
+
     render() {
-        const { from, to, dep, arr, no, price, buy } = this.props;
+        const { from, to, dep, arr, no, price, buy, del, id } = this.props;
         return (
             <div className='alll'>
                 {(this.state.showModal &&
                     <BuyModal
                         show={this.showModal}
                         handleClose={this.close}
+                        id={id}
                     />
                 )}
                 <Panel className='ticket'>
@@ -42,6 +49,7 @@ class Ticket extends Component {
                     <p>Number of tickets left: {no}</p>
                     <p>Price: {price}</p>
                     {buy && <Button onClick={() => this.showModal()}>Buy</Button>}
+                    {del && <Button onClick={() => this.delete()}>Delete</Button>}
                 </Panel>
             </div >
         );

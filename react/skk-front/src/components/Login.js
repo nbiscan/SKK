@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import '../styles/Login.css';
 import axios from 'axios';
 import history from '../history';

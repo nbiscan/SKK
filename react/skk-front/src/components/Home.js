@@ -47,6 +47,7 @@ class Home extends Component {
 
                 {this.state.tickets.map(ticket =>
                     <Ticket
+                        id={ticket.id}
                         from={ticket.from}
                         to={ticket.to}
                         dep={ticket.departure}
@@ -54,6 +55,7 @@ class Home extends Component {
                         no={ticket.no_of_cards}
                         price={ticket.price}
                         buy={this.state.registered}
+                        del={false}
                     />
                 )}
             </div>
