@@ -8,10 +8,15 @@ class UserTicketsController < ApplicationController
 
   # POST /users/:user_id/tickets
   def create
+    @ticket = Ticket.find(params[:ticket_id])
+
+    if @ticket.no_of_cards < 1
+      return
+    end
+
     @userticket = UserTicket.create!(user_id: params[:user_id], ticket_id: params[:ticket_id])
 
-    # reduce number of tickets by 1
-    @ticket = Ticket.find(params[:ticket_id])
+    # reduce number of tickets by 1 for purchase
     @ticket.update(no_of_cards: @ticket.no_of_cards - 1)
 
     json_response(@userticket, :created)

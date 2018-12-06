@@ -10,6 +10,15 @@ class Ticket extends Component {
         super(props);
         this.state = {
             showModal: false,
+            showTicket: true,
+        }
+    }
+
+    componentDidMount() {
+        if (moment().isAfter(moment(this.props.dep))) {
+            this.setState({
+                showTicket: false,
+            })
         }
     }
 
@@ -50,24 +59,26 @@ class Ticket extends Component {
         const { from, to, dep, arr, no, price, buy, del, id } = this.props;
         return (
             <div className='alll'>
-                {(this.state.showModal &&
-                    <BuyModal
-                        show={this.showModal}
-                        handleClose={this.close}
-                        id={id}
-                    />
-                )}
-                <Panel className='ticket'>
-                    <h3>From: {from}</h3>
-                    <h3>To: {to}</h3>
-                    <p>Departure time: {moment(dep).format('MMMM Do YYYY, h:mm:ss a')}</p>
-                    <p>Arrival time: {moment(arr).format('MMMM Do YYYY, h:mm:ss a')}</p>
-                    <p>Number of tickets left: {no}</p>
-                    <p>Price: {price}</p>
-                    {buy && <Button onClick={() => this.showModal()}>Buy</Button>}
-                    {del && <Button onClick={() => this.delete(dep, id)}>Delete</Button>}
-                </Panel>
-            </div >
+                {(true) && <div>
+                    {(this.state.showModal &&
+                        <BuyModal
+                            show={this.showModal}
+                            handleClose={this.close}
+                            id={id}
+                        />
+                    )}
+                    <Panel className='ticket'>
+                        <h3>From: {from}</h3>
+                        <h3>To: {to}</h3>
+                        <p>Departure time: {moment(dep).format('MMMM Do YYYY, h:mm:ss a')}</p>
+                        <p>Arrival time: {moment(arr).format('MMMM Do YYYY, h:mm:ss a')}</p>
+                        <p>Number of tickets left: {no}</p>
+                        <p>Price: {price}</p>
+                        {buy && <Button onClick={() => this.showModal()}>Buy</Button>}
+                        {del && <Button onClick={() => this.delete(dep, id)}>Delete</Button>}
+                    </Panel>
+                </div>}
+            </div>
         );
     }
 }

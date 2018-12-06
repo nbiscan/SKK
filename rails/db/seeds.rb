@@ -8,7 +8,7 @@
 
 carriers = Carrier.create([{name: "FlixBus"}, {name: "Eurolines"}])
 
-Ticket.create([{from: "Zagreb", to: "Berlin", departure: "2018-12-19T20:23:44.862Z", arrival: "2018-12-21T20:23:44.862Z", no_of_cards: 60, price: 100, carrier_id: 1}])
+Ticket.create([{from: "Zagreb", to: "Berlin", departure: "2019-01-13T20:23:44.862Z", arrival: "2019-01-14T20:23:44.862Z", no_of_cards: 60, price: 100, carrier_id: 1}])
 Ticket.create([{from: "Paris", to: "Vienna", departure: "2018-12-12T20:23:44.862Z", arrival: "2018-12-15T20:23:44.862Z", no_of_cards: 40, price: 90, carrier_id: 2}])
-Ticket.create([{from: "Madrid", to: "Rome", departure: "2018-11-12T02:23:44.862Z", arrival: "2018-11-15T06:23:44.862Z", no_of_cards: 40, price: 90, carrier_id: 1}])
-Ticket.create([{from: "Zagreb", to: "Bern", departure: "2018-12-11T20:23:44.862Z", arrival: "2018-12-12T20:23:44.862Z", no_of_cards: 60, price: 100, carrier_id: 2}])
+Ticket.create([{from: "Madrid", to: "Rome", departure: "2018-12-30T02:23:44.862Z", arrival: "2019-01-04T06:23:44.862Z", no_of_cards: 40, price: 90, carrier_id: 1}])
+Ticket.create([{from: "Zagreb", to: "Bern", departure: "2018-12-23T20:23:44.862Z", arrival: "2018-12-25T20:23:44.862Z", no_of_cards: 60, price: 100, carrier_id: 2}])
