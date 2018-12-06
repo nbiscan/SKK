@@ -25,9 +25,17 @@ class Ticket extends Component {
         });
     }
 
-    async delete(id) {
+    async delete(d, id) {
 
-        const resp = await axios.delete(`http://localhost:3000/users/1/tickets/${id}`, {
+        const departure = moment(d).subtract(1, 'hours');
+        const now = moment();
+
+        if (now.isAfter(departure)) {
+            alert('Its too late to cancel reservation');
+            return;
+        }
+
+        const resp = await axios.delete(`http://localhost:3000/users/${localStorage.getItem('user')}/tickets/${id}`, {
             headers: {
                 'Authorization': localStorage.getItem('token')
             }
@@ -57,7 +65,7 @@ class Ticket extends Component {
                     <p>Number of tickets left: {no}</p>
                     <p>Price: {price}</p>
                     {buy && <Button onClick={() => this.showModal()}>Buy</Button>}
-                    {del && <Button onClick={() => this.delete(id)}>Delete</Button>}
+                    {del && <Button onClick={() => this.delete(dep, id)}>Delete</Button>}
                 </Panel>
             </div >
         );

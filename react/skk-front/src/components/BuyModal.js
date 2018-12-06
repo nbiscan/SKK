@@ -12,13 +12,14 @@ const BuyModal = (props) => {
             alert("Enter card number please");
             return;
         }
-        const resp = await axios.post(`http://localhost:3000/users/1/tickets/${id}`, {}, {
-            headers: {
-                'Authorization': localStorage.getItem('token'),
-            }
-        }).catch(err => {
-            alert('Error');
-        });
+        const resp = await axios.post(`http://localhost:3000/users/${localStorage.getItem('user')}/tickets/${id}`,
+            {}, {
+                headers: {
+                    'Authorization': localStorage.getItem('token'),
+                }
+            }).catch(err => {
+                alert('Error');
+            });
 
         if (resp && resp.status === 201)
             alert('Ticket successfully bought.');

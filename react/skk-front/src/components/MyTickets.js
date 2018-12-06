@@ -16,7 +16,7 @@ class MyTickets extends Component {
     }
 
     async componentDidMount() {
-        const resp = await axios.get('http://localhost:3000/users/1/tickets',
+        const resp = await axios.get(`http://localhost:3000/users/${localStorage.getItem('user')}/tickets`,
             {
                 headers: {
                     'Authorization': localStorage.getItem('token')
@@ -27,7 +27,7 @@ class MyTickets extends Component {
         });
     }
 
-  
+
 
     render() {
         return (

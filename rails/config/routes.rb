@@ -3,18 +3,6 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
-  # resources :users do
-  #   resources :tickets
-  # end
-
-  # resources :users do
-  #   resources :user_tickets
-  # end
-
-  # resources :tickets do
-  #   resources :user_tickets
-  # end
-
   get "tickets", to: "ticket#getall"
 
   get "/users/:user_id/tickets/", to: "user_tickets#index"

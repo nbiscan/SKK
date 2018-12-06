@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Col, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Form, FormGroup, Col, FormControl, Button } from 'react-bootstrap';
 import '../styles/Login.css';
 import axios from 'axios';
 import history from '../history';
@@ -8,7 +8,6 @@ class Login extends Component {
 
     constructor(props) {
         super(props);
-
     }
 
     async login(email, password) {
@@ -19,6 +18,7 @@ class Login extends Component {
         });
         if (resp && resp.status === 200) {
             localStorage.setItem('token', resp.data.auth_token);
+            localStorage.setItem('user', resp.data.user); // not quite safe
             history.push('/');
         }
     }
