@@ -7,12 +7,12 @@ const BuyModal = (props) => {
     const { show, handleClose, id } = props;
     let cardNo = 0;
 
-    const buy = (cardNo) => {
+    const buy = async (cardNo) => {
         if (!cardNo) {
             alert("Enter card number please");
             return;
         }
-        const resp = axios.post(`http://localhost:3000/users/1/tickets/${id}`, {}, {
+        const resp = await axios.post(`http://localhost:3000/users/1/tickets/${id}`, {}, {
             headers: {
                 'Authorization': localStorage.getItem('token'),
             }
@@ -20,7 +20,7 @@ const BuyModal = (props) => {
             alert('Error');
         });
 
-        if (resp && resp === 200)
+        if (resp && resp.status === 201)
             alert('Ticket successfully bought.');
 
         handleClose();

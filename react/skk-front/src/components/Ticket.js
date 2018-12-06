@@ -25,15 +25,15 @@ class Ticket extends Component {
         });
     }
 
-    delete(id) {
+    async delete(id) {
 
-        const resp = axios.delete(`http://localhost:3000/users/1/tickets/${id}`, {
-            headers:{
+        const resp = await axios.delete(`http://localhost:3000/users/1/tickets/${id}`, {
+            headers: {
                 'Authorization': localStorage.getItem('token')
             }
         });
 
-        if(resp && resp===204){
+        if (resp && (resp.status === 200 || resp.status === 204)) {
             window.location.reload();
         }
     }

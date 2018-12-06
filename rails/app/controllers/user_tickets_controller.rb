@@ -8,14 +8,14 @@ class UserTicketsController < ApplicationController
 
   # POST /users/:user_id/tickets
   def create
-    @userticket = UserTicket.create!(user_ticket_params)
+    @userticket = UserTicket.create!(user_id: params[:user_id], ticket_id: params[:ticket_id])
     json_response(@userticket, :created)
   end
 
   # DELETE /users/:user_id/tickets/:id
   def destroy
     UserTicket.where(user_id: params[:user_id], ticket_id: params[:ticket_id]).destroy_all
-    head :no_content
+    json_response(:deleted)
   end
 
   private
