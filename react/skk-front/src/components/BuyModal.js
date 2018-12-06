@@ -25,7 +25,7 @@ const BuyModal = (props) => {
             alert('Ticket successfully bought.');
 
         handleClose();
-        history.push('/');
+        window.location.reload();
     }
 
     return (
