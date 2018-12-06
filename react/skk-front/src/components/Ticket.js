@@ -25,9 +25,17 @@ class Ticket extends Component {
         });
     }
 
-    delete() {
-        const ticketid = this.props.id;
-        const resp = axios.delete(`http://localhost:3000/users/1/tickets/${ticketid}`);
+    delete(id) {
+
+        const resp = axios.delete(`http://localhost:3000/users/1/tickets/${id}`, {
+            headers:{
+                'Authorization': localStorage.getItem('token')
+            }
+        });
+
+        if(resp && resp===204){
+            window.reload();
+        }
     }
 
     render() {
@@ -49,7 +57,7 @@ class Ticket extends Component {
                     <p>Number of tickets left: {no}</p>
                     <p>Price: {price}</p>
                     {buy && <Button onClick={() => this.showModal()}>Buy</Button>}
-                    {del && <Button onClick={() => this.delete()}>Delete</Button>}
+                    {del && <Button onClick={() => this.delete(id)}>Delete</Button>}
                 </Panel>
             </div >
         );

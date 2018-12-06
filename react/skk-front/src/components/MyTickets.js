@@ -39,6 +39,7 @@ class MyTickets extends Component {
 
                 {this.state.tickets.map(ticket =>
                     <Ticket
+                        id={ticket.id}
                         from={ticket.from}
                         to={ticket.to}
                         dep={ticket.departure}

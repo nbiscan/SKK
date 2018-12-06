@@ -5,25 +5,20 @@ import axios from 'axios';
 
 const BuyModal = (props) => {
     const { show, handleClose, id } = props;
-    let cardNo=0;
+    let cardNo = 0;
 
     const buy = (cardNo) => {
-        if(!cardNo){
+        if (!cardNo) {
             alert("Enter card number please");
             return;
         }
-        const resp = axios.post(`http://localhost:3000/users/1/tickets/${id}`,
-            {
-                'user_id': 1,
-                'ticket_id': id,
-            },
-            {
-                headers: {
-                    'Authorization': localStorage.getItem('token'),
-                }
-            }).catch(err => {
-                alert('Error');
-            });
+        const resp = axios.post(`http://localhost:3000/users/1/tickets/${id}`, {}, {
+            headers: {
+                'Authorization': localStorage.getItem('token'),
+            }
+        }).catch(err => {
+            alert('Error');
+        });
 
         if (resp && resp === 200)
             alert('Ticket successfully bought.');
