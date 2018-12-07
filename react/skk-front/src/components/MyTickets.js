@@ -23,7 +23,7 @@ class MyTickets extends Component {
                     'Authorization': localStorage.getItem('token')
                 }
             });
-        await this.setState({
+         this.setState({
             tickets: resp.data,
         });
 

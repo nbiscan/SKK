@@ -74,8 +74,8 @@ class Ticket extends Component {
                         <p>Arrival time: {moment(arr).format('MMMM Do YYYY, h:mm:ss a')}</p>
                         <p>Number of tickets left: {no}</p>
                         <p>Price: {price}</p>
-                        {buy && <Button onClick={() => this.showModal()}>Buy</Button>}
-                        {del && <Button onClick={() => this.delete(dep, id)}>Delete</Button>}
+                        {buy && <Button onClick={() => this.showModal()}>Buy ticket</Button>}
+                        {del && <Button onClick={() => this.delete(dep, id)}>Cancel trip</Button>}
                     </Panel>
                 </div>}
             </div>
