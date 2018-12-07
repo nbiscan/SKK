@@ -7,7 +7,7 @@ class UserTicketsController < ApplicationController
   end
 
   # POST /users/:user_id/tickets/:ticket_id
-  def create
+  def buy
     @ticket = Ticket.find(params[:ticket_id])
 
     if @ticket.no_of_cards < 1
@@ -24,14 +24,14 @@ class UserTicketsController < ApplicationController
   end
 
   # DELETE /users/:user_id/tickets/:ticket_id
-  def destroy
+  def cancel
     UserTicket.where(user_id: params[:user_id], ticket_id: params[:ticket_id]).destroy_all
 
-    # increase number of tickets by 1 for purchase
+    # increase number of tickets by 1 on cancelation
     @ticket = Ticket.find(params[:ticket_id])
     @ticket.update!(no_of_cards: @ticket.no_of_cards + 1)
 
-    json_response(:deleted)
+    head :no_content
   end
 
   private
