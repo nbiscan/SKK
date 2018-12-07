@@ -6,11 +6,12 @@ class UserTicketsController < ApplicationController
     json_response(@user.tickets)
   end
 
-  # POST /users/:user_id/tickets
+  # POST /users/:user_id/tickets/:ticket_id
   def create
     @ticket = Ticket.find(params[:ticket_id])
 
     if @ticket.no_of_cards < 1
+      head 503
       return
     end
 
@@ -22,7 +23,7 @@ class UserTicketsController < ApplicationController
     json_response(@userticket, :created)
   end
 
-  # DELETE /users/:user_id/tickets/:id
+  # DELETE /users/:user_id/tickets/:ticket_id
   def destroy
     UserTicket.where(user_id: params[:user_id], ticket_id: params[:ticket_id]).destroy_all
 

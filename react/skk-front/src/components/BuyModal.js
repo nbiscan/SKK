@@ -18,11 +18,12 @@ const BuyModal = (props) => {
                     'Authorization': localStorage.getItem('token'),
                 }
             }).catch(err => {
-                alert('Error');
+                alert('No more tickets');
             });
 
         if (resp && resp.status === 201)
             alert('Ticket successfully bought.');
+
 
         handleClose();
         window.location.reload();
