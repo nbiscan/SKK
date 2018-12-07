@@ -19,6 +19,7 @@ class Login extends Component {
         if (resp && resp.status === 200) {
             localStorage.setItem('token', resp.data.auth_token);
             localStorage.setItem('user', resp.data.user); // not quite safe
+            localStorage.setItem('email', resp.data.email);
             history.push('/');
         }
     }

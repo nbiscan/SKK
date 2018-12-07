@@ -12,6 +12,7 @@ class MyTickets extends Component {
         super(props);
         this.state = {
             tickets: [],
+            email: localStorage.getItem('email'),
         }
     }
 
@@ -25,8 +26,8 @@ class MyTickets extends Component {
         await this.setState({
             tickets: resp.data,
         });
-    }
 
+    }
 
 
     render() {
@@ -34,7 +35,7 @@ class MyTickets extends Component {
             <div className='home'>
 
                 <PageHeader className='header'>
-                    <small><button className='link' onClick={() => history.push('/')}>Back</button></small>
+                    <small>{this.state.email}</small><small><button className='link' onClick={() => history.push('/')}>Back</button></small>
                 </PageHeader>
 
                 {this.state.tickets.map(ticket =>
