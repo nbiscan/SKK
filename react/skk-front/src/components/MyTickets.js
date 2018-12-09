@@ -5,13 +5,14 @@ import axios from 'axios';
 import history from '../history';
 import '../styles/Home.css';
 
-
 class MyTickets extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             tickets: [],
+            uniqueTickets: [],
+            uniqueTicketsCnt: [],
             email: localStorage.getItem('email'),
         }
     }
@@ -23,12 +24,25 @@ class MyTickets extends Component {
                     'Authorization': localStorage.getItem('token')
                 }
             });
-         this.setState({
+        await this.setState({
             tickets: resp.data,
         });
 
-    }
+        var obj = {};
+        var uniq = new Array();
 
+        for (var i = 0, len = this.state.tickets.length; i < len; i++)
+            obj[this.state.tickets[i]['id']] = this.state.tickets[i];
+
+
+        for (var key in obj)
+            uniq.push(obj[key]);
+
+        this.setState({
+            uniqueTickets: uniq,
+        })
+
+    }
 
     render() {
         return (
@@ -38,7 +52,7 @@ class MyTickets extends Component {
                     <small>{this.state.email}</small><small><button className='link' onClick={() => history.push('/')}>Back</button></small>
                 </PageHeader>
 
-                {this.state.tickets.map(ticket =>
+                {this.state.uniqueTickets.map(ticket =>
                     <Ticket
                         id={ticket.id}
                         from={ticket.from}
