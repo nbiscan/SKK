@@ -28,19 +28,36 @@ class MyTickets extends Component {
             tickets: resp.data,
         });
 
+        await this.checkDupl();
+
+    }
+
+    checkDupl() {
         var obj = {};
+        var cnt = {};
+        this.state.tickets.forEach((t, i) => {
+            cnt[i] = 0;
+        })
         var uniq = new Array();
+        var count = new Array();
 
-        for (var i = 0, len = this.state.tickets.length; i < len; i++)
-            obj[this.state.tickets[i]['id']] = this.state.tickets[i];
+        for (var i = 0; i < this.state.tickets.length; i++) {
+            const id = this.state.tickets[i]['id']-1;
+            obj[id] = this.state.tickets[i];
+            cnt[id] += 1;
+        }
 
 
-        for (var key in obj)
+        for (var key in obj) {
             uniq.push(obj[key]);
+            count.push(cnt[key]);
+        }
 
         this.setState({
             uniqueTickets: uniq,
-        })
+            uniqueTicketsCnt: count,
+        });
+
 
     }
 
@@ -52,7 +69,7 @@ class MyTickets extends Component {
                     <small>{this.state.email}</small><small><button className='link' onClick={() => history.push('/')}>Back</button></small>
                 </PageHeader>
 
-                {this.state.uniqueTickets.map(ticket =>
+                {this.state.uniqueTickets.map((ticket, i) =>
                     <Ticket
                         id={ticket.id}
                         from={ticket.from}
@@ -63,6 +80,7 @@ class MyTickets extends Component {
                         price={ticket.price}
                         buy={false}
                         del={true}
+                        count={this.state.uniqueTicketsCnt[i]}
                     />
                 )}
             </div>

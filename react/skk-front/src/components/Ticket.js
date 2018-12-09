@@ -56,7 +56,7 @@ class Ticket extends Component {
     }
 
     render() {
-        const { from, to, dep, arr, no, price, buy, del, id } = this.props;
+        const { from, to, dep, arr, no, price, buy, del, id, count } = this.props;
         return (
             <div className='alll'>
                 {(true) && <div>
@@ -74,6 +74,7 @@ class Ticket extends Component {
                         <p>Arrival time: {moment(arr).format('MMMM Do YYYY, h:mm:ss a')}</p>
                         <p>Number of tickets left: {no}</p>
                         <p>Price: {price}</p>
+                        {del && <p>Tickets count: {isNaN(count) ? 1 : count}</p>}
                         {buy && <Button onClick={() => this.showModal()}>Buy ticket</Button>}
                         {del && <Button onClick={() => this.delete(dep, id)}>Cancel trip</Button>}
                     </Panel>
